@@ -16,6 +16,7 @@ not_valid_text = 'Невалидный запрос. Пример запроса
 
 @dp.message(Command("start"))
 async def start(msg: types.Message):
+    print(msg.from_user.id)
     await msg.reply("Привет! Отправь мне JSON данные, и я проверю их на вхождение определенного объекта.")
 
 
@@ -27,6 +28,7 @@ async def aggregate_json(msg: types.Message):
         return await msg.reply(not_valid_text)
     json_msg = json.dumps(aggregated)
     await msg.answer(json_msg)
+
 
 @dp.message()
 async def send_json(msg: types.Message):
